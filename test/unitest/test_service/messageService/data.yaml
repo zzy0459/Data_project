@@ -1,0 +1,17 @@
+-
+  module_name: messageService
+  class_name: messageService
+  function_name: xxx
+  params:
+      AutoID: 
+      MessageID: 
+      Content: 
+      ConversationID: 
+      User: 
+      Number: 
+
+  validate:
+    - eq:
+        - code
+        - "2000"
+    

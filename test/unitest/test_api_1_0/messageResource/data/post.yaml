@@ -1,0 +1,22 @@
+- name: message添加接口
+  request:
+    method: post
+    url: /api_1_0/message
+    headers:
+      token: token
+    data:
+      AutoID: 
+      MessageID: 
+      Content: 
+      ConversationID: 
+      User: 
+      Number: 
+
+  validate:
+    - eq:
+        - status_code
+        - 200
+    - eq:
+        - code
+        - "2000"
+    

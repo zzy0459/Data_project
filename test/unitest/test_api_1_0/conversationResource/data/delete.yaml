@@ -1,0 +1,22 @@
+- name: conversation删除接口
+  request:
+    method: delete
+    url: /api_1_0/conversation
+    headers:
+      content-type: application/json
+    data:
+      AutoID: 
+      ConversationID: 
+      Title: 
+      Satisfaction: 
+      Evaluate_Content: 
+      Persona: 
+      Accuracy: 
+      adaptability: 
+
+  validate:
+    - eq:
+        - status_code
+        - 200
+
+    

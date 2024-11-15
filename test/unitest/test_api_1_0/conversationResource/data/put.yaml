@@ -1,0 +1,22 @@
+- name: conversation修改接口
+  request:
+    method: put
+    url: /api_1_0/conversation
+    headers:
+      content-type: application/json
+    data:
+      AutoID: 
+      ConversationID: 
+      Title: 
+      Satisfaction: 
+      Evaluate_Content: 
+      Persona: 
+      Accuracy: 
+      adaptability: 
+
+  validate:
+    - eq:
+        - status_code
+        - 200
+
+    

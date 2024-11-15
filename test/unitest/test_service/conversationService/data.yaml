@@ -1,0 +1,19 @@
+-
+  module_name: conversationService
+  class_name: conversationService
+  function_name: xxx
+  params:
+      AutoID: 
+      ConversationID: 
+      Title: 
+      Satisfaction: 
+      Evaluate_Content: 
+      Persona: 
+      Accuracy: 
+      adaptability: 
+
+  validate:
+    - eq:
+        - code
+        - "2000"
+    

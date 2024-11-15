@@ -1,0 +1,24 @@
+- name: conversation添加接口
+  request:
+    method: post
+    url: /api_1_0/conversation
+    headers:
+      token: token
+    data:
+      AutoID: 
+      ConversationID: 
+      Title: 
+      Satisfaction: 
+      Evaluate_Content: 
+      Persona: 
+      Accuracy: 
+      adaptability: 
+
+  validate:
+    - eq:
+        - status_code
+        - 200
+    - eq:
+        - code
+        - "2000"
+    
