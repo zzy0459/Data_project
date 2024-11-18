@@ -18,3 +18,7 @@ def Evaluate():
 @conversation_blueprint.route('/conversation/add_conversation', methods=['POST'], endpoint='add_conversation')
 def add_conversation():
     return ConversationOtherResource.add_conversation()
+
+@conversation_blueprint.route('/conversation/get_title', methods=['GET'], endpoint='get_title')
+def get_title():
+    return ConversationOtherResource.get_title()

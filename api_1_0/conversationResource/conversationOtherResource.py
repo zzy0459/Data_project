@@ -78,3 +78,22 @@ class ConversationOtherResource(Resource):
 			res = ConversationService.add_conversation(**kwargs)
 
 		return jsonify(code=res['code'], message=res['message'], data=res['data'])
+
+	@classmethod
+	def get_title(cls, AutoID=None):
+
+
+		parser = reqparse.RequestParser()
+
+		parser.add_argument('ConversationID', location='args', required=False,
+							help='ConversationID参数类型不正确或缺失')
+
+
+		kwargs = parser.parse_args()
+		kwargs = commons.put_remove_none(**kwargs)
+
+		res = ConversationService.get_title(**kwargs)
+		if res['code'] == RET.OK:
+			return jsonify(code=res['code'], message=res['message'], data=res['data'])
+		else:
+			return jsonify(code=res['code'], message=res['message'], data=res['data'])

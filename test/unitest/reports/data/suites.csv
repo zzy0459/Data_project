@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2737","test_get[caseInfo0]","test_api_1_0.conversationResource","Sat Nov 16 21:54:19 GMT+08:00 2024","broken","Sat Nov 16 21:54:21 GMT+08:00 2024","TestConversationResource","test_conversationResource","",""
+"","2702","test_delete[caseInfo0]","","Sat Nov 16 21:54:27 GMT+08:00 2024","passed","Sat Nov 16 21:54:30 GMT+08:00 2024","","","",""
+"","2696","test_update[caseInfo0]","test_api_1_0.conversationResource","Sat Nov 16 21:54:24 GMT+08:00 2024","broken","Sat Nov 16 21:54:27 GMT+08:00 2024","TestConversationResource","test_conversationResource","",""
+"","2691","test_post[caseInfo0]","test_api_1_0.conversationResource","Sat Nov 16 21:54:22 GMT+08:00 2024","broken","Sat Nov 16 21:54:24 GMT+08:00 2024","TestConversationResource","test_conversationResource","",""

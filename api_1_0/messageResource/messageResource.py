@@ -33,7 +33,7 @@ class MessageResource(Resource):
         parser.add_argument('ConversationID', location='args', required=False, help='ConversationID参数类型不正确或缺失')
         parser.add_argument('User', location='args', required=False, help='User参数类型不正确或缺失')
         parser.add_argument('Number', location='args', required=False, help='Number参数类型不正确或缺失')
-        
+
         parser.add_argument('Page', location='args', required=False, help='Page参数类型不正确或缺失')
         parser.add_argument('Size', location='args', required=False, help='Size参数类型不正确或缺失')
 
@@ -44,9 +44,9 @@ class MessageResource(Resource):
         if res['code'] == RET.OK:
             return jsonify(code=res['code'], message=res['message'], data=res['data'], totalPage=res['totalPage'], totalCount=res['totalCount'])
         else:
-            return jsonify(code=res['code'], message=res['message'], data=res['data']) 
+            return jsonify(code=res['code'], message=res['message'], data=res['data'])
 
-    
+
     # delete
     @classmethod
     def delete(cls, AutoID=None):
@@ -62,7 +62,7 @@ class MessageResource(Resource):
 
         return jsonify(code=res['code'], message=res['message'], data=res['data'])
 
-    
+
     # put
     @classmethod
     def put(cls, AutoID):
@@ -75,7 +75,7 @@ class MessageResource(Resource):
         parser.add_argument('ConversationID', location='form', required=False, help='ConversationID参数类型不正确或缺失')
         parser.add_argument('User', location='form', required=False, help='User参数类型不正确或缺失')
         parser.add_argument('Number', location='form', required=False, help='Number参数类型不正确或缺失')
-        
+
         kwargs = parser.parse_args()
         kwargs = commons.put_remove_none(**kwargs)
         kwargs['AutoID'] = AutoID
@@ -84,7 +84,7 @@ class MessageResource(Resource):
 
         return jsonify(code=res['code'], message=res['message'], data=res['data'])
 
-    
+
     # add
     @classmethod
     def post(cls):
@@ -111,7 +111,7 @@ class MessageResource(Resource):
             parser.add_argument('ConversationID', location='form', required=False, help='ConversationID参数类型不正确或缺失')
             parser.add_argument('User', location='form', required=False, help='User参数类型不正确或缺失')
             parser.add_argument('Number', location='form', required=False, help='Number参数类型不正确或缺失')
-            
+
             kwargs = parser.parse_args()
             kwargs = commons.put_remove_none(**kwargs)
 
