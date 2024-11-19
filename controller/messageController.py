@@ -54,14 +54,14 @@ class MessageController(Message,BaseModel):
             if kwargs.get('AutoID'):
                 filter_list.append(cls.AutoID == kwargs['AutoID'])
             else:
+                if kwargs.get('ConversationID') is not None:
+                    filter_list.append(cls.ConversationID == kwargs.get('ConversationID'))
                 if kwargs.get('AutoID') is not None:
                     filter_list.append(cls.AutoID == kwargs.get('AutoID'))
                 if kwargs.get('MessageID') is not None:
                     filter_list.append(cls.MessageID == kwargs.get('MessageID'))
                 if kwargs.get('Content'):
                     filter_list.append(cls.Content == kwargs.get('Content'))
-                if kwargs.get('ConversationID') is not None:
-                    filter_list.append(cls.ConversationID == kwargs.get('ConversationID'))
                 if kwargs.get('User') is not None:
                     filter_list.append(cls.User == kwargs.get('User'))
                 if kwargs.get('Number') is not None:

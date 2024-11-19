@@ -1,0 +1,1150 @@
+2024-11-19 23:02:55.626 | ERROR    | utils.loggings:exception:40 - (pymysql.err.OperationalError) (1049, "Unknown database 'data_project'")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x000002411D3A7E50>
+    │                        └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+    └ <sqlalchemy.engine.base.Connection object at 0x000002411F680850>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 3293, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x000002411C5F6B80>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           │                └ <classmethod object at 0x000002411C5EDD00>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 1269, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+            │                 └ <classmethod object at 0x000002411C5EDEB0>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x000002411C6171F0>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 170, in _do_get
+    self._dec_overflow()
+    │    └ <function QueuePool._dec_overflow at 0x000002411C617310>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F69BC00>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x000002411C5F6940>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F68CE80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 903, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+    │    │      └ <function Logger.debug at 0x000002411B82E1F0>
+    │    └ <Logger sqlalchemy.pool.impl.QueuePool (WARNING)>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F69B300>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F68CE80>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x000002411D81F790>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F68CE80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\create.py", line 645, in connect
+    return dialect.connect(*cargs, **cparams)
+           │       │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x000002411D458280>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           │    │            │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │    │            │        └ ()
+           │    │            └ <class 'pymysql.connections.Connection'>
+           │    └ <module 'pymysql' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\__init__.py'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+    │    └ <function Connection.connect at 0x000002411D9FE5E0>
+    └ <pymysql.connections.Connection object at 0x000002411F680940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+    │    └ <function Connection._request_authentication at 0x000002411D9FEA60>
+    └ <pymysql.connections.Connection object at 0x000002411F680940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 976, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  │     │                          │     └ <pymysql.protocol.MysqlPacket object at 0x000002411F680CA0>
+                  │     │                          └ <pymysql.connections.Connection object at 0x000002411F680940>
+                  │     └ <function caching_sha2_password_auth at 0x000002411D9D0A60>
+                  └ <module 'pymysql._auth' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\_auth.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\_auth.py", line 240, in caching_sha2_password_auth
+    pkt = conn._read_packet()
+          │    └ <function Connection._read_packet at 0x000002411D9FE700>
+          └ <pymysql.connections.Connection object at 0x000002411F680940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+    │      └ <function MysqlPacket.raise_for_error at 0x000002411D9F9AF0>
+    └ <pymysql.protocol.MysqlPacket object at 0x000002411F680CD0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    │   │                     │    └ <member '_data' of 'MysqlPacket' objects>
+    │   │                     └ <pymysql.protocol.MysqlPacket object at 0x000002411F680CD0>
+    │   └ <function raise_mysql_exception at 0x000002411D8CEC10>
+    └ <module 'pymysql.err' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\err.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+          │          │      └ "Unknown database 'data_project'"
+          │          └ 1049
+          └ <class 'pymysql.err.OperationalError'>
+
+pymysql.err.OperationalError: (1049, "Unknown database 'data_project'")
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000024119BDDEE0>
+    └ <Thread(Thread-1, started daemon 15100)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x0000024119BDDC10>
+    └ <Thread(Thread-1, started daemon 15100)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-1, started daemon 15100)>
+    │    │        │    └ (<socket.socket fd=1020, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr...
+    │    │        └ <Thread(Thread-1, started daemon 15100)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>>
+    └ <Thread(Thread-1, started daemon 15100)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 63652)
+    │    │              └ <socket.socket fd=1020, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <function BaseServer.finish_request at 0x0000024119BE2820>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+    │    │                   │        └ ('127.0.0.1', 63652)
+    │    │                   └ <socket.socket fd=1020, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000002411B9A3700>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F6681C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000002411B7ACB80>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F6681C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000002411F6681C0>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F6681C0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000002411F6DFDC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002411F6DFEE0>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1020>, 'wsgi.errors': <_io.TextIOW...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002411F6DFEE0>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1020>, 'wsgi.errors': <_io.TextIOW...
+           │    └ <function Flask.wsgi_app at 0x000002411C2C8160>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000002411C2C5940>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000002411C2C58B0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'message.getChatMeaasge'
+           │    │           │    │              └ <Rule '/api_1_0/message/getChatMeaasge' (OPTIONS, GET, HEAD) -> message.getChatMeaasge>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000002411D81F160>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x000002411C2C5AF0>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\messageResource\urls.py", line 16, in getChatMeaasge
+    return MessageOtherResource.getChatMeaasge()
+           │                    └ <classmethod object at 0x000002411F649DF0>
+           └ <class 'api_1_0.messageResource.messageOtherResource.MessageOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\messageResource\messageOtherResource.py", line 34, in getChatMeaasge
+    res = MessageService.getChatMeaasge(**kwargs)
+          │              │                └ {'Content': '12.11和12.9哪个大？', 'ConversationID': '1'}
+          │              └ <classmethod object at 0x000002411F649F40>
+          └ <class 'service.messageService.MessageService'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\messageService.py", line 44, in getChatMeaasge
+    results = MessageController.get(**kwargs1)
+              │                 │     └ {'ConversationID': '1'}
+              │                 └ <classmethod object at 0x000002411DB1E910>
+              └ <class 'controller.messageController.MessageController'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\controller\messageController.py", line 76, in get
+    count = message_info.count()
+            │            └ <function Query.count at 0x000002411D6A53A0>
+            └ <flask_sqlalchemy.query.Query object at 0x000002411F668B50>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 3132, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+    │    │                 └ <sqlalchemy.sql.functions.count at 0x2411f668a30; count>
+    │    └ <function Query._legacy_from_self at 0x000002411D690AF0>
+    └ <flask_sqlalchemy.query.Query object at 0x000002411F668B50>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 2825, in scalar
+    ret = self.one()
+          │    └ <function Query.one at 0x000002411D6A8B80>
+          └ <flask_sqlalchemy.query.Query object at 0x000002411F680550>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 2798, in one
+    return self._iter().one()  # type: ignore
+           │    └ <function Query._iter at 0x000002411D6A8D30>
+           └ <flask_sqlalchemy.query.Query object at 0x000002411F680550>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+            │                  │    │      │      │    │       └ <function Session.execute at 0x000002411D72F9D0>
+            │                  │    │      │      │    └ <sqlalchemy.orm.session.Session object at 0x000002411F668940>
+            │                  │    │      │      └ <flask_sqlalchemy.query.Query object at 0x000002411F680550>
+            │                  │    │      └ ~_T
+            │                  │    └ <class 'sqlalchemy.engine.result.Result'>
+            │                  └ ~_T
+            └ typing.Union
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 2308, in execute
+    return self._execute_internal(
+           │    └ <function Session._execute_internal at 0x000002411D72F940>
+           └ <sqlalchemy.orm.session.Session object at 0x000002411F668940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 2180, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           │    │                    └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+           │    └ <function Session._connection_for_bind at 0x000002411D72F8B0>
+           └ <sqlalchemy.orm.session.Session object at 0x000002411F668940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 2047, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           │     │                    │       └ None
+           │     │                    └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+           │     └ <function SessionTransaction._connection_for_bind at 0x000002411D72D5E0>
+           └ <sqlalchemy.orm.session.SessionTransaction object at 0x000002411F691980>
+
+  File "<string>", line 2, in _connection_for_bind
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                │  │      │      └ {}
+                │  │      └ (Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8), None)
+                │  └ <sqlalchemy.orm.session.SessionTransaction object at 0x000002411F691980>
+                └ <function SessionTransaction._connection_for_bind at 0x000002411D72D4C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 1143, in _connection_for_bind
+    conn = bind.connect()
+           │    └ <function Engine.connect at 0x000002411D3A7DC0>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 3269, in connect
+    return self._connection_cls(self)
+           │    │               └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+           │    └ <class 'sqlalchemy.engine.base.Connection'>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    │          └ <classmethod object at 0x000002411D385D60>
+    └ <class 'sqlalchemy.engine.base.Connection'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 2431, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+          │                    │              │                 └ OperationalError(1049, "Unknown database 'data_project'")
+          │                    │              └ (<class 'pymysql.err.OperationalError'>, OperationalError(1049, "Unknown database 'data_project'"), <traceback object at 0x00...
+          │                    └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('(pymysql.err.OperationalError) (1049, "Unknown database \'data_project\'")')
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x000002411D3A7E50>
+    │                        └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+    └ <sqlalchemy.engine.base.Connection object at 0x000002411F680850>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 3293, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x000002411C5F6B80>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           │                └ <classmethod object at 0x000002411C5EDD00>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 1269, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+            │                 └ <classmethod object at 0x000002411C5EDEB0>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x000002411C6171F0>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 170, in _do_get
+    self._dec_overflow()
+    │    └ <function QueuePool._dec_overflow at 0x000002411C617310>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F69BC00>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x000002411C5F6940>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F68CE80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 903, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+    │    │      └ <function Logger.debug at 0x000002411B82E1F0>
+    │    └ <Logger sqlalchemy.pool.impl.QueuePool (WARNING)>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F69B300>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F68CE80>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x000002411D81F790>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F68CE80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\create.py", line 645, in connect
+    return dialect.connect(*cargs, **cparams)
+           │       │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x000002411D458280>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           │    │            │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │    │            │        └ ()
+           │    │            └ <class 'pymysql.connections.Connection'>
+           │    └ <module 'pymysql' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\__init__.py'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+    │    └ <function Connection.connect at 0x000002411D9FE5E0>
+    └ <pymysql.connections.Connection object at 0x000002411F680940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+    │    └ <function Connection._request_authentication at 0x000002411D9FEA60>
+    └ <pymysql.connections.Connection object at 0x000002411F680940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 976, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  │     │                          │     └ <pymysql.protocol.MysqlPacket object at 0x000002411F680CA0>
+                  │     │                          └ <pymysql.connections.Connection object at 0x000002411F680940>
+                  │     └ <function caching_sha2_password_auth at 0x000002411D9D0A60>
+                  └ <module 'pymysql._auth' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\_auth.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\_auth.py", line 240, in caching_sha2_password_auth
+    pkt = conn._read_packet()
+          │    └ <function Connection._read_packet at 0x000002411D9FE700>
+          └ <pymysql.connections.Connection object at 0x000002411F680940>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+    │      └ <function MysqlPacket.raise_for_error at 0x000002411D9F9AF0>
+    └ <pymysql.protocol.MysqlPacket object at 0x000002411F680CD0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    │   │                     │    └ <member '_data' of 'MysqlPacket' objects>
+    │   │                     └ <pymysql.protocol.MysqlPacket object at 0x000002411F680CD0>
+    │   └ <function raise_mysql_exception at 0x000002411D8CEC10>
+    └ <module 'pymysql.err' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\err.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+          │          │      └ "Unknown database 'data_project'"
+          │          └ 1049
+          └ <class 'pymysql.err.OperationalError'>
+
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1049, "Unknown database 'data_project'")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-19 23:04:17.634 | ERROR    | utils.loggings:exception:40 - (pymysql.err.OperationalError) (1049, "Unknown database 'data_project'")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x000002411D3A7E50>
+    │                        └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+    └ <sqlalchemy.engine.base.Connection object at 0x000002411F9964C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 3293, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x000002411C5F6B80>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           │                └ <classmethod object at 0x000002411C5EDD00>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 1269, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+            │                 └ <classmethod object at 0x000002411C5EDEB0>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x000002411C6171F0>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 170, in _do_get
+    self._dec_overflow()
+    │    └ <function QueuePool._dec_overflow at 0x000002411C617310>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F999700>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x000002411C5F6940>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F854E80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 903, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+    │    │      └ <function Logger.debug at 0x000002411B82E1F0>
+    │    └ <Logger sqlalchemy.pool.impl.QueuePool (WARNING)>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F999080>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F854E80>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x000002411D81F790>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F854E80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\create.py", line 645, in connect
+    return dialect.connect(*cargs, **cparams)
+           │       │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x000002411D458280>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           │    │            │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │    │            │        └ ()
+           │    │            └ <class 'pymysql.connections.Connection'>
+           │    └ <module 'pymysql' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\__init__.py'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+    │    └ <function Connection.connect at 0x000002411D9FE5E0>
+    └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+    │    └ <function Connection._request_authentication at 0x000002411D9FEA60>
+    └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 976, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  │     │                          │     └ <pymysql.protocol.MysqlPacket object at 0x000002411F996820>
+                  │     │                          └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+                  │     └ <function caching_sha2_password_auth at 0x000002411D9D0A60>
+                  └ <module 'pymysql._auth' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\_auth.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\_auth.py", line 240, in caching_sha2_password_auth
+    pkt = conn._read_packet()
+          │    └ <function Connection._read_packet at 0x000002411D9FE700>
+          └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+    │      └ <function MysqlPacket.raise_for_error at 0x000002411D9F9AF0>
+    └ <pymysql.protocol.MysqlPacket object at 0x000002411F996850>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    │   │                     │    └ <member '_data' of 'MysqlPacket' objects>
+    │   │                     └ <pymysql.protocol.MysqlPacket object at 0x000002411F996850>
+    │   └ <function raise_mysql_exception at 0x000002411D8CEC10>
+    └ <module 'pymysql.err' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\err.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+          │          │      └ "Unknown database 'data_project'"
+          │          └ 1049
+          └ <class 'pymysql.err.OperationalError'>
+
+pymysql.err.OperationalError: (1049, "Unknown database 'data_project'")
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000024119BDDEE0>
+    └ <Thread(Thread-2, started daemon 35220)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x0000024119BDDC10>
+    └ <Thread(Thread-2, started daemon 35220)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-2, started daemon 35220)>
+    │    │        │    └ (<socket.socket fd=952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    │        └ <Thread(Thread-2, started daemon 35220)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>>
+    └ <Thread(Thread-2, started daemon 35220)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 63766)
+    │    │              └ <socket.socket fd=952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <function BaseServer.finish_request at 0x0000024119BE2820>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+    │    │                   │        └ ('127.0.0.1', 63766)
+    │    │                   └ <socket.socket fd=952, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000002411B9A3700>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F717820>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000002411B7ACB80>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F717820>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000002411F717820>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F717820>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000002411F931E50>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002411F931EE0>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=952>, 'wsgi.errors': <_io.TextIOWr...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002411F931EE0>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=952>, 'wsgi.errors': <_io.TextIOWr...
+           │    └ <function Flask.wsgi_app at 0x000002411C2C8160>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000002411C2C5940>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000002411C2C58B0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'message.getChatMeaasge'
+           │    │           │    │              └ <Rule '/api_1_0/message/getChatMeaasge' (OPTIONS, GET, HEAD) -> message.getChatMeaasge>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000002411D81F160>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x000002411C2C5AF0>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\messageResource\urls.py", line 16, in getChatMeaasge
+    return MessageOtherResource.getChatMeaasge()
+           │                    └ <classmethod object at 0x000002411F649DF0>
+           └ <class 'api_1_0.messageResource.messageOtherResource.MessageOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\messageResource\messageOtherResource.py", line 34, in getChatMeaasge
+    res = MessageService.getChatMeaasge(**kwargs)
+          │              │                └ {'Content': '12.11和12.9哪个大？', 'ConversationID': '1'}
+          │              └ <classmethod object at 0x000002411F649F40>
+          └ <class 'service.messageService.MessageService'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\messageService.py", line 44, in getChatMeaasge
+    results = MessageController.get(**kwargs1)
+              │                 │     └ {'ConversationID': '1'}
+              │                 └ <classmethod object at 0x000002411DB1E910>
+              └ <class 'controller.messageController.MessageController'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\controller\messageController.py", line 76, in get
+    count = message_info.count()
+            │            └ <function Query.count at 0x000002411D6A53A0>
+            └ <flask_sqlalchemy.query.Query object at 0x000002411F717550>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 3132, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+    │    │                 └ <sqlalchemy.sql.functions.count at 0x2411f996070; count>
+    │    └ <function Query._legacy_from_self at 0x000002411D690AF0>
+    └ <flask_sqlalchemy.query.Query object at 0x000002411F717550>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 2825, in scalar
+    ret = self.one()
+          │    └ <function Query.one at 0x000002411D6A8B80>
+          └ <flask_sqlalchemy.query.Query object at 0x000002411F9962E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 2798, in one
+    return self._iter().one()  # type: ignore
+           │    └ <function Query._iter at 0x000002411D6A8D30>
+           └ <flask_sqlalchemy.query.Query object at 0x000002411F9962E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+            │                  │    │      │      │    │       └ <function Session.execute at 0x000002411D72F9D0>
+            │                  │    │      │      │    └ <sqlalchemy.orm.session.Session object at 0x000002411F717F70>
+            │                  │    │      │      └ <flask_sqlalchemy.query.Query object at 0x000002411F9962E0>
+            │                  │    │      └ ~_T
+            │                  │    └ <class 'sqlalchemy.engine.result.Result'>
+            │                  └ ~_T
+            └ typing.Union
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 2308, in execute
+    return self._execute_internal(
+           │    └ <function Session._execute_internal at 0x000002411D72F940>
+           └ <sqlalchemy.orm.session.Session object at 0x000002411F717F70>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 2180, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           │    │                    └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+           │    └ <function Session._connection_for_bind at 0x000002411D72F8B0>
+           └ <sqlalchemy.orm.session.Session object at 0x000002411F717F70>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 2047, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           │     │                    │       └ None
+           │     │                    └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+           │     └ <function SessionTransaction._connection_for_bind at 0x000002411D72D5E0>
+           └ <sqlalchemy.orm.session.SessionTransaction object at 0x000002411F992D00>
+
+  File "<string>", line 2, in _connection_for_bind
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                │  │      │      └ {}
+                │  │      └ (Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8), None)
+                │  └ <sqlalchemy.orm.session.SessionTransaction object at 0x000002411F992D00>
+                └ <function SessionTransaction._connection_for_bind at 0x000002411D72D4C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\orm\session.py", line 1143, in _connection_for_bind
+    conn = bind.connect()
+           │    └ <function Engine.connect at 0x000002411D3A7DC0>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 3269, in connect
+    return self._connection_cls(self)
+           │    │               └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+           │    └ <class 'sqlalchemy.engine.base.Connection'>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    │          └ <classmethod object at 0x000002411D385D60>
+    └ <class 'sqlalchemy.engine.base.Connection'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 2431, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+          │                    │              │                 └ OperationalError(1049, "Unknown database 'data_project'")
+          │                    │              └ (<class 'pymysql.err.OperationalError'>, OperationalError(1049, "Unknown database 'data_project'"), <traceback object at 0x00...
+          │                    └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError('(pymysql.err.OperationalError) (1049, "Unknown database \'data_project\'")')
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+    │                        │      └ <function Engine.raw_connection at 0x000002411D3A7E50>
+    │                        └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+    └ <sqlalchemy.engine.base.Connection object at 0x000002411F9964C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\base.py", line 3293, in raw_connection
+    return self.pool.connect()
+           │    │    └ <function Pool.connect at 0x000002411C5F6B80>
+           │    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ Engine(mysql+pymysql://root:***@localhost:3306/data_project?charset=utf8)
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           │                │         └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           │                └ <classmethod object at 0x000002411C5EDD00>
+           └ <class 'sqlalchemy.pool.base._ConnectionFairy'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 1269, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            │                 │        └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+            │                 └ <classmethod object at 0x000002411C5EDEB0>
+            └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          │    └ <function QueuePool._do_get at 0x000002411C6171F0>
+          └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 170, in _do_get
+    self._dec_overflow()
+    │    └ <function QueuePool._dec_overflow at 0x000002411C617310>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F999700>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           │    └ <function Pool._create_connection at 0x000002411C5F6940>
+           └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           │                 └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+           └ <class 'sqlalchemy.pool.base._ConnectionRecord'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F854E80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 903, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+    │    │      └ <function Logger.debug at 0x000002411B82E1F0>
+    │    └ <Logger sqlalchemy.pool.impl.QueuePool (WARNING)>
+    └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x000002411F999080>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ OperationalError(1049, "Unknown database 'data_project'")
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+    │    │                               │    │               └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F854E80>
+    │    │                               │    └ <function create_engine.<locals>.connect at 0x000002411D81F790>
+    │    │                               └ <sqlalchemy.pool.impl.QueuePool object at 0x000002411D8D20A0>
+    │    └ <member 'dbapi_connection' of '_ConnectionRecord' objects>
+    └ <sqlalchemy.pool.base._ConnectionRecord object at 0x000002411F854E80>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\create.py", line 645, in connect
+    return dialect.connect(*cargs, **cparams)
+           │       │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │       │        └ []
+           │       └ <function DefaultDialect.connect at 0x000002411D458280>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\sqlalchemy\engine\default.py", line 616, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           │    │            │        │        └ {'host': 'localhost', 'database': 'data_project', 'user': 'root', 'password': '1234', 'port': 3306, 'charset': 'utf8', 'clien...
+           │    │            │        └ ()
+           │    │            └ <class 'pymysql.connections.Connection'>
+           │    └ <module 'pymysql' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\__init__.py'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x000002411D826A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 358, in __init__
+    self.connect()
+    │    └ <function Connection.connect at 0x000002411D9FE5E0>
+    └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 664, in connect
+    self._request_authentication()
+    │    └ <function Connection._request_authentication at 0x000002411D9FEA60>
+    └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 976, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  │     │                          │     └ <pymysql.protocol.MysqlPacket object at 0x000002411F996820>
+                  │     │                          └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+                  │     └ <function caching_sha2_password_auth at 0x000002411D9D0A60>
+                  └ <module 'pymysql._auth' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\_auth.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\_auth.py", line 240, in caching_sha2_password_auth
+    pkt = conn._read_packet()
+          │    └ <function Connection._read_packet at 0x000002411D9FE700>
+          └ <pymysql.connections.Connection object at 0x000002411F9965B0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\connections.py", line 772, in _read_packet
+    packet.raise_for_error()
+    │      └ <function MysqlPacket.raise_for_error at 0x000002411D9F9AF0>
+    └ <pymysql.protocol.MysqlPacket object at 0x000002411F996850>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    │   │                     │    └ <member '_data' of 'MysqlPacket' objects>
+    │   │                     └ <pymysql.protocol.MysqlPacket object at 0x000002411F996850>
+    │   └ <function raise_mysql_exception at 0x000002411D8CEC10>
+    └ <module 'pymysql.err' from 'C:\\Users\\15201\\.conda\\envs\\ai-chatbot\\lib\\site-packages\\pymysql\\err.py'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\pymysql\err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+          │          │      └ "Unknown database 'data_project'"
+          │          └ 1049
+          └ <class 'pymysql.err.OperationalError'>
+
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1049, "Unknown database 'data_project'")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-19 23:35:21.265 | ERROR    | utils.loggings:exception:40 - 'Title'
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000024119BDDEE0>
+    └ <Thread(Thread-3, started daemon 2260)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x0000024119BDDC10>
+    └ <Thread(Thread-3, started daemon 2260)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-3, started daemon 2260)>
+    │    │        │    └ (<socket.socket fd=808, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    │        └ <Thread(Thread-3, started daemon 2260)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>>
+    └ <Thread(Thread-3, started daemon 2260)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 50121)
+    │    │              └ <socket.socket fd=808, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <function BaseServer.finish_request at 0x0000024119BE2820>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+    │    │                   │        └ ('127.0.0.1', 50121)
+    │    │                   └ <socket.socket fd=808, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000002411B9A3700>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F996C70>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000002411B7ACB80>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F996C70>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000002411F996C70>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002411D9F3DC0>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000002411F996C70>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000002411F998430>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002411F998310>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=808>, 'wsgi.errors': <_io.TextIOWr...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002411F998310>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=808>, 'wsgi.errors': <_io.TextIOWr...
+           │    └ <function Flask.wsgi_app at 0x000002411C2C8160>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000002411C2C5940>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000002411C2C58B0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'conversation.add_conversation'
+           │    │           │    │              └ <Rule '/api_1_0/conversation/add_conversation' (OPTIONS, POST) -> conversation.add_conversation>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000002411D81F160>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x000002411C2C5AF0>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\urls.py", line 20, in add_conversation
+    return ConversationOtherResource.add_conversation()
+           │                         └ <classmethod object at 0x000002411DA18DC0>
+           └ <class 'api_1_0.conversationResource.conversationOtherResource.ConversationOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\conversationOtherResource.py", line 78, in add_conversation
+    res = ConversationService.add_conversation(**kwargs)
+          │                   │                  └ {}
+          │                   └ <classmethod object at 0x000002411DB1E6D0>
+          └ <class 'service.conversationService.ConversationService'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\conversationService.py", line 74, in add_conversation
+    encrypted_title = cls.encrypt(kwargs['Title'], cls.ENCRYPTION_KEY)
+                      │   │       │                │   └ 'your-encryption-key'
+                      │   │       │                └ <class 'service.conversationService.ConversationService'>
+                      │   │       └ {}
+                      │   └ <staticmethod object at 0x000002411DB1E610>
+                      └ <class 'service.conversationService.ConversationService'>
+
+KeyError: 'Title'
+2024-11-19 23:44:09.388 | ERROR    | utils.loggings:exception:40 - 'Title'
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001EC2E2BDEE0>
+    └ <Thread(Thread-1, started daemon 35000)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000001EC2E2BDC10>
+    └ <Thread(Thread-1, started daemon 35000)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-1, started daemon 35000)>
+    │    │        │    └ (<socket.socket fd=1104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr...
+    │    │        └ <Thread(Thread-1, started daemon 35000)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000001EC320F99D0>>
+    └ <Thread(Thread-1, started daemon 35000)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 50748)
+    │    │              └ <socket.socket fd=1104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <function BaseServer.finish_request at 0x000001EC2E2C2820>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001EC320F99D0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001EC320F99D0>
+    │    │                   │        └ ('127.0.0.1', 50748)
+    │    │                   └ <socket.socket fd=1104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001EC320F99D0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000001EC30083700>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001EC33D8B1C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000001EC2FE8DB80>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001EC33D8B1C0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000001EC33D8B1C0>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001EC320F99D0>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000001EC33D8B1C0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000001EC33D81D30>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001EC33D81E50>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1104>, 'wsgi.errors': <_io.TextIOW...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001EC33D81E50>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1104>, 'wsgi.errors': <_io.TextIOW...
+           │    └ <function Flask.wsgi_app at 0x000001EC309A8160>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000001EC309A5940>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000001EC309A58B0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'conversation.add_conversation'
+           │    │           │    │              └ <Rule '/api_1_0/conversation/add_conversation' (POST, OPTIONS) -> conversation.add_conversation>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000001EC31EFF160>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x000001EC309A5AF0>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\urls.py", line 20, in add_conversation
+    return ConversationOtherResource.add_conversation()
+           │                         └ <classmethod object at 0x000001EC32142700>
+           └ <class 'api_1_0.conversationResource.conversationOtherResource.ConversationOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\conversationOtherResource.py", line 80, in add_conversation
+    res = ConversationService.add_conversation(**kwargs)
+          │                   │                  └ {}
+          │                   └ <classmethod object at 0x000001EC321FD5E0>
+          └ <class 'service.conversationService.ConversationService'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\conversationService.py", line 74, in add_conversation
+    encrypted_title = cls.encrypt(kwargs['Title'], cls.ENCRYPTION_KEY)
+                      │   │       │                │   └ 'your-encryption-key'
+                      │   │       │                └ <class 'service.conversationService.ConversationService'>
+                      │   │       └ {}
+                      │   └ <staticmethod object at 0x000001EC321FD640>
+                      └ <class 'service.conversationService.ConversationService'>
+
+KeyError: 'Title'

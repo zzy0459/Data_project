@@ -4,6 +4,7 @@
 import datetime
 import math
 import json
+import random
 
 from sqlalchemy import or_
 
@@ -20,10 +21,19 @@ class ConversationController(Conversation,BaseModel):
     # add
     @classmethod
     def add(cls, **kwargs):
-        
         try:
+            # 检查id是否重复
+            while True:
+                conversation_id = str(random.randint(100000000, 999999999))
+                existing_conversation = db.session.query(Conversation).filter_by(
+                    ConversationID=conversation_id).first()
+                if existing_conversation:
+                    continue
+                else:
+                    break
+
             model = Conversation(
-                ConversationID=kwargs.get('ConversationID'),
+                ConversationID=conversation_id,
                 Title=kwargs.get('Title'),
                 Satisfaction=kwargs.get('Satisfaction'),
                 Evaluate_Content=kwargs.get('Evaluate_Content'),
@@ -37,7 +47,7 @@ class ConversationController(Conversation,BaseModel):
             results = {
                 'add_time': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 'AutoID': model.AutoID,
-                
+                'ConversationID': model.ConversationID
             }
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': results}
             

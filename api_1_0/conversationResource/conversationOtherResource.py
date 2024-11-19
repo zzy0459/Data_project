@@ -48,6 +48,7 @@ class ConversationOtherResource(Resource):
         eg.[{k1:v1,k2:v2,...},...]
         '''
 		parser = reqparse.RequestParser()
+
 		parser.add_argument('ConversationList', type=str, location='form', required=False,
 							help='ConversationList参数类型不正确或缺失')
 
@@ -55,6 +56,7 @@ class ConversationOtherResource(Resource):
 		kwargs = commons.put_remove_none(**kwargs)
 
 		if kwargs.get('ConversationList'):
+			print("'ConversationList'", kwargs['ConversationList'])
 			kwargs['ConversationList'] = json.loads(kwargs['ConversationList'])
 			for data in kwargs['ConversationList']:
 				for key in []:
@@ -62,6 +64,7 @@ class ConversationOtherResource(Resource):
 			res = ConversationController.add_list(**kwargs)
 
 		else:
+			"""
 			parser.add_argument('ConversationID', location='form', required=False,
 								help='ConversationID参数类型不正确或缺失')
 			parser.add_argument('Title', location='form', required=False, help='Title参数类型不正确或缺失')
@@ -70,14 +73,17 @@ class ConversationOtherResource(Resource):
 			parser.add_argument('Evaluate_Content', location='form', required=False,
 								help='Evaluate_Content参数类型不正确或缺失')
 			parser.add_argument('Persona', location='form', required=False, help='Persona参数类型不正确或缺失')
-
-
+			
 			kwargs = parser.parse_args()
 			kwargs = commons.put_remove_none(**kwargs)
-
+			"""
 			res = ConversationService.add_conversation(**kwargs)
 
-		return jsonify(code=res['code'], message=res['message'], data=res['data'])
+		#return jsonify(code=res['code'], message=res['message'], data=res['data'])
+		if 'data' in res['data'].keys():
+			return jsonify({'data':res['data']['data']['ConversationID']})
+		else:
+			return jsonify({})
 
 	@classmethod
 	def get_title(cls, AutoID=None):

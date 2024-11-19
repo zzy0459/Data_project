@@ -81,7 +81,7 @@ class MessageService(MessageController):
             })
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': res1}
         except Exception as e:
-            # loggings.exception(1, e)
+            loggings.exception(1, e)
             return {'code': RET.DBERR, 'message': error_map_EN[RET.DBERR], 'data': {'error': str(e)}}
         finally:
             db.session.close()

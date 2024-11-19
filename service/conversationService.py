@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+import random
 
 from controller.conversationController import ConversationController
 from controller.messageController import MessageController
@@ -70,11 +71,14 @@ class ConversationService(ConversationController):
     def add_conversation(cls, **kwargs):
         try:
             print(kwargs)
+            title = "New Chat"
+            persona = "human"
+            # conversation_id = kwargs.get('ConversationID', str(random.randint(100000, 999999)))
             # Title和Persona加密
-            encrypted_title = cls.encrypt(kwargs['Title'], cls.ENCRYPTION_KEY)
-            encrypted_persona = cls.encrypt(kwargs['Persona'], cls.ENCRYPTION_KEY)
+            encrypted_title = cls.encrypt(title, cls.ENCRYPTION_KEY)
+            encrypted_persona = cls.encrypt(persona, cls.ENCRYPTION_KEY)
             kwargs1 = {
-                'ConversationID': kwargs['ConversationID'],
+                # 'ConversationID': conversation_id,
                 'Title': encrypted_title,
                 'Persona': encrypted_persona
             }
