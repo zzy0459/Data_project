@@ -19,6 +19,6 @@ def Evaluate():
 def add_conversation():
     return ConversationOtherResource.add_conversation()
 
-@conversation_blueprint.route('/conversation/get_title', methods=['GET'], endpoint='get_title')
-def get_title():
-    return ConversationOtherResource.get_title()
+@conversation_blueprint.route('/conversation/get_title/<int:ConversationID>', methods=['GET'], endpoint='get_title')
+def get_title(ConversationID):
+    return ConversationOtherResource.get_title(ConversationID)

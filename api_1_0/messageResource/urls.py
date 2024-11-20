@@ -15,6 +15,6 @@ api.add_resource(MessageResource, '/message/<AutoID>', '/message', endpoint='Mes
 def getChatMessage(ConversationID):
     return MessageOtherResource.getChatMessage(ConversationID=ConversationID)
 
-@message_blueprint.route('/message/getHistoryMessage', methods=['GET'], endpoint='getHistoryMessage')
-def getHistoryMessage():
-    return MessageOtherResource.getHistoryMessage()
+@message_blueprint.route('/message/getHistoryMessage/<int:ConversationID>', methods=['GET'], endpoint='getHistoryMessage')
+def getHistoryMessage(ConversationID):
+    return MessageOtherResource.getHistoryMessage(ConversationID=ConversationID)

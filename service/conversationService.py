@@ -40,7 +40,10 @@ class ConversationService(ConversationController):
                 'ConversationID': kwargs['ConversationID'],
             }
             results = ConversationController.get(**kwargs1)
-            res=results['data'][0]['Title']
+            if results['data']:
+                res = results['data'][0]['Title']
+            else:
+                res = "New chat"
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': res}
         except Exception as e:
             loggings.exception(1, e)
@@ -71,7 +74,7 @@ class ConversationService(ConversationController):
     def add_conversation(cls, **kwargs):
         try:
             print(kwargs)
-            title = "New Chat"
+            title = "New chat"
             persona = "human"
             # conversation_id = kwargs.get('ConversationID', str(random.randint(100000, 999999)))
             # Title和Persona加密

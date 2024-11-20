@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from flask_restful import Resource, reqparse
-from flask import jsonify
+from flask import jsonify, Response, stream_with_context
 from service.conversationService import ConversationService
 from controller.conversationController import ConversationController
 from utils import commons
@@ -54,7 +54,7 @@ class ConversationOtherResource(Resource):
 
 		kwargs = parser.parse_args()
 		kwargs = commons.put_remove_none(**kwargs)
-
+		"""
 		if kwargs.get('ConversationList'):
 			print("'ConversationList'", kwargs['ConversationList'])
 			kwargs['ConversationList'] = json.loads(kwargs['ConversationList'])
@@ -64,7 +64,7 @@ class ConversationOtherResource(Resource):
 			res = ConversationController.add_list(**kwargs)
 
 		else:
-			"""
+			
 			parser.add_argument('ConversationID', location='form', required=False,
 								help='ConversationID参数类型不正确或缺失')
 			parser.add_argument('Title', location='form', required=False, help='Title参数类型不正确或缺失')
@@ -76,8 +76,8 @@ class ConversationOtherResource(Resource):
 			
 			kwargs = parser.parse_args()
 			kwargs = commons.put_remove_none(**kwargs)
-			"""
-			res = ConversationService.add_conversation(**kwargs)
+		"""
+		res = ConversationService.add_conversation(**kwargs)
 
 		#return jsonify(code=res['code'], message=res['message'], data=res['data'])
 		if 'data' in res['data'].keys():
@@ -86,9 +86,9 @@ class ConversationOtherResource(Resource):
 			return jsonify({})
 
 	@classmethod
-	def get_title(cls, AutoID=None):
+	def get_title(cls, ConversationID=None):
 
-
+		"""
 		parser = reqparse.RequestParser()
 
 		parser.add_argument('ConversationID', location='args', required=False,
@@ -97,9 +97,18 @@ class ConversationOtherResource(Resource):
 
 		kwargs = parser.parse_args()
 		kwargs = commons.put_remove_none(**kwargs)
+		"""
+		res = ConversationService.get_title(ConversationID=ConversationID)
 
-		res = ConversationService.get_title(**kwargs)
-		if res['code'] == RET.OK:
-			return jsonify(code=res['code'], message=res['message'], data=res['data'])
-		else:
-			return jsonify(code=res['code'], message=res['message'], data=res['data'])
+		def generate(text):
+			# 生成流式数据
+			yield f"data: {text}\n\n"  # 每行以 data: 开头，并以双换行结束
+			# 发送结束消息
+			yield 'data: [DONE]\n\n'
+		"""
+			if res['code'] == RET.OK:
+				return jsonify(code=res['code'], message=res['message'], data=res['data'])
+			else:
+				return jsonify(code=res['code'], message=res['message'], data=res['data'])
+			"""
+		return Response(stream_with_context(generate(res['data'])), content_type='text/event-stream')
