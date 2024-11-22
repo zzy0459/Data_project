@@ -109,3 +109,451 @@ Traceback (most recent call last):
         └ {'code': '2000', 'message': 'successfully!', 'totalCount': 0, 'totalPage': 0, 'data': []}
 
 IndexError: list index out of range
+2024-11-22 15:53:04.182 | ERROR    | utils.loggings:exception:40 - 'Satisfaction'
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002E05AF6E040>
+    └ <Thread(Thread-1, started daemon 41932)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000002E05AF6DD30>
+    └ <Thread(Thread-1, started daemon 41932)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-1, started daemon 41932)>
+    │    │        │    └ (<socket.socket fd=1056, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr...
+    │    │        └ <Thread(Thread-1, started daemon 41932)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000002E05EDB7A00>>
+    └ <Thread(Thread-1, started daemon 41932)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 62148)
+    │    │              └ <socket.socket fd=1056, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <function BaseServer.finish_request at 0x000002E05AF70940>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002E05EDB7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002E05EDB7A00>
+    │    │                   │        └ ('127.0.0.1', 62148)
+    │    │                   └ <socket.socket fd=1056, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002E05EDB7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000002E05CD34820>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002E060A408E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000002E05CB3ECA0>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002E060A408E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000002E060A408E0>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002E05EDB7A00>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000002E060A408E0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000002E060A443A0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002E060A44310>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1056>, 'wsgi.errors': <_io.TextIOW...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002E060A44310>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1056>, 'wsgi.errors': <_io.TextIOW...
+           │    └ <function Flask.wsgi_app at 0x000002E05D658280>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000002E05D656A60>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000002E05D6569D0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {'ConversationID': 1}
+           │    │           │    │              │    └ 'conversation.Evaluate'
+           │    │           │    │              └ <Rule '/api_1_0/conversation/Evaluate/<ConversationID>' (PUT, OPTIONS) -> conversation.Evaluate>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000002E05EBAF4C0>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x000002E05D656C10>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\urls.py", line 16, in Evaluate
+    return ConversationOtherResource.Evaluate(ConversationID)
+           │                         │        └ 1
+           │                         └ <classmethod object at 0x000002E05EDF16D0>
+           └ <class 'api_1_0.conversationResource.conversationOtherResource.ConversationOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\conversationOtherResource.py", line 39, in Evaluate
+    res = ConversationService.Evaluate(ConversationID = ConversationID,**kwargs)
+          │                   │                         │                └ {}
+          │                   │                         └ 1
+          │                   └ <classmethod object at 0x000002E05EEBB640>
+          └ <class 'service.conversationService.ConversationService'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\conversationService.py", line 64, in Evaluate
+    'Satisfaction': kwargs['Satisfaction'],
+                    └ {'ConversationID': 1}
+
+KeyError: 'Satisfaction'
+2024-11-22 16:01:47.008 | ERROR    | utils.loggings:exception:40 - 'Satisfaction'
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000018A1C27E040>
+    └ <Thread(Thread-1, started daemon 42356)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x0000018A1C27DD30>
+    └ <Thread(Thread-1, started daemon 42356)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-1, started daemon 42356)>
+    │    │        │    └ (<socket.socket fd=1076, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr...
+    │    │        └ <Thread(Thread-1, started daemon 42356)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x0000018A200D7A00>>
+    └ <Thread(Thread-1, started daemon 42356)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 62260)
+    │    │              └ <socket.socket fd=1076, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <function BaseServer.finish_request at 0x0000018A1C280940>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000018A200D7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000018A200D7A00>
+    │    │                   │        └ ('127.0.0.1', 62260)
+    │    │                   └ <socket.socket fd=1076, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000018A200D7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x0000018A1E044820>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x0000018A21D618E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x0000018A1DE4ECA0>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x0000018A21D618E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x0000018A21D618E0>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000018A200D7A00>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x0000018A21D618E0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x0000018A21D65310>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x0000018A21D65280>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1076>, 'wsgi.errors': <_io.TextIOW...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x0000018A21D65280>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1076>, 'wsgi.errors': <_io.TextIOW...
+           │    └ <function Flask.wsgi_app at 0x0000018A1E968280>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x0000018A1E966A60>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x0000018A1E9669D0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {'ConversationID': 1}
+           │    │           │    │              │    └ 'conversation.Evaluate'
+           │    │           │    │              └ <Rule '/api_1_0/conversation/Evaluate/<ConversationID>' (OPTIONS, PUT) -> conversation.Evaluate>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x0000018A1FECF4C0>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x0000018A1E966C10>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\urls.py", line 16, in Evaluate
+    return ConversationOtherResource.Evaluate(ConversationID)
+           │                         │        └ 1
+           │                         └ <classmethod object at 0x0000018A201106D0>
+           └ <class 'api_1_0.conversationResource.conversationOtherResource.ConversationOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\conversationOtherResource.py", line 45, in Evaluate
+    res = ConversationService.Evaluate(ConversationID = ConversationID,**kwargs)
+          │                   │                         │                └ {}
+          │                   │                         └ 1
+          │                   └ <classmethod object at 0x0000018A201DA850>
+          └ <class 'service.conversationService.ConversationService'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\conversationService.py", line 64, in Evaluate
+    'Satisfaction': kwargs['Satisfaction'],
+                    └ {'ConversationID': 1}
+
+KeyError: 'Satisfaction'
+2024-11-22 16:13:59.912 | ERROR    | utils.loggings:exception:40 - 'Satisfaction'
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x00000236540CE040>
+    └ <Thread(Thread-1, started daemon 38176)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x00000236540CDD30>
+    └ <Thread(Thread-1, started daemon 38176)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-1, started daemon 38176)>
+    │    │        │    └ (<socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    │        └ <Thread(Thread-1, started daemon 38176)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x0000023657EF7A00>>
+    └ <Thread(Thread-1, started daemon 38176)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 62458)
+    │    │              └ <socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <function BaseServer.finish_request at 0x00000236540D0940>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000023657EF7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000023657EF7A00>
+    │    │                   │        └ ('127.0.0.1', 62458)
+    │    │                   └ <socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000023657EF7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x0000023655E74820>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x0000023659B808E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x0000023655C7DCA0>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x0000023659B808E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x0000023659B808E0>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x0000023657EF7A00>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x0000023659B808E0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x0000023659B85430>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x0000023659B853A0>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=472>, 'wsgi.errors': <_io.TextIOWr...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x0000023659B853A0>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=472>, 'wsgi.errors': <_io.TextIOWr...
+           │    └ <function Flask.wsgi_app at 0x0000023656798280>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x0000023656796A60>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x00000236567969D0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {'ConversationID': 1}
+           │    │           │    │              │    └ 'conversation.Evaluate'
+           │    │           │    │              └ <Rule '/api_1_0/conversation/Evaluate/<ConversationID>' (PUT, OPTIONS) -> conversation.Evaluate>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x0000023657CEF4C0>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x0000023656796C10>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\urls.py", line 16, in Evaluate
+    return ConversationOtherResource.Evaluate(ConversationID)
+           │                         │        └ 1
+           │                         └ <classmethod object at 0x0000023657F306D0>
+           └ <class 'api_1_0.conversationResource.conversationOtherResource.ConversationOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\conversationOtherResource.py", line 34, in Evaluate
+    res = ConversationService.Evaluate(ConversationID = ConversationID, suitable=data_dict['suitable'])
+          │                   │                         │                        └ {'idx': 1, 'msg_idx': 0, 'suitable': 1}
+          │                   │                         └ 1
+          │                   └ <classmethod object at 0x0000023657FFA640>
+          └ <class 'service.conversationService.ConversationService'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\conversationService.py", line 65, in Evaluate
+    'Satisfaction': kwargs['Satisfaction'],
+                    └ {'ConversationID': 1, 'suitable': 1}
+
+KeyError: 'Satisfaction'
+2024-11-22 16:23:16.088 | ERROR    | utils.loggings:exception:40 - unsupported operand type(s) for +: 'NoneType' and 'int'
+Traceback (most recent call last):
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000025619D9E040>
+    └ <Thread(Thread-2, started daemon 39440)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x0000025619D9DD30>
+    └ <Thread(Thread-2, started daemon 39440)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-2, started daemon 39440)>
+    │    │        │    └ (<socket.socket fd=1068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr...
+    │    │        └ <Thread(Thread-2, started daemon 39440)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000002561DBE7A00>>
+    └ <Thread(Thread-2, started daemon 39440)>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 62606)
+    │    │              └ <socket.socket fd=1068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <function BaseServer.finish_request at 0x0000025619DA0940>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002561DBE7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002561DBE7A00>
+    │    │                   │        └ ('127.0.0.1', 62606)
+    │    │                   └ <socket.socket fd=1068, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002561DBE7A00>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000002561BB64820>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002561F8718E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 390, in handle
+    super().handle()
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 435, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000002561B96ECA0>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000002561F8718E0>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\http\server.py", line 423, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000002561F8718E0>>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <Flask 'app'>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000002561DBE7A00>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000002561F8718E0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000002561F875430>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\werkzeug\serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+                       │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002561F8753A0>
+                       │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1068>, 'wsgi.errors': <_io.TextIOW...
+                       └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000002561F8753A0>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=1068>, 'wsgi.errors': <_io.TextIOW...
+           │    └ <function Flask.wsgi_app at 0x000002561C488280>
+           └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000002561C486A60>
+               └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000002561C4869D0>
+         └ <Flask 'app'>
+
+  File "C:\Users\15201\.conda\envs\ai-chatbot\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {'ConversationID': 1}
+           │    │           │    │              │    └ 'conversation.Evaluate'
+           │    │           │    │              └ <Rule '/api_1_0/conversation/Evaluate/<ConversationID>' (OPTIONS, PUT) -> conversation.Evaluate>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000002561D9DF4C0>, 'apiversion.Apiversion': <function View.as_view...
+           │    │           └ <Flask 'app'>
+           │    └ <function Flask.ensure_sync at 0x000002561C486C10>
+           └ <Flask 'app'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\urls.py", line 16, in Evaluate
+    return ConversationOtherResource.Evaluate(ConversationID)
+           │                         │        └ 1
+           │                         └ <classmethod object at 0x000002561DCD5640>
+           └ <class 'api_1_0.conversationResource.conversationOtherResource.ConversationOtherResource'>
+
+  File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\api_1_0\conversationResource\conversationOtherResource.py", line 34, in Evaluate
+    res = ConversationService.Evaluate(ConversationID = ConversationID, suitable=data_dict['suitable'])
+          │                   │                         │                        └ {'idx': 1, 'msg_idx': 0, 'suitable': -1}
+          │                   │                         └ 1
+          │                   └ <classmethod object at 0x000002561DCEA3D0>
+          └ <class 'service.conversationService.ConversationService'>
+
+> File "D:\cityu课件\DataEngineering\Project\AI-chatbot\Backend\service\conversationService.py", line 76, in Evaluate
+    'adaptability': res1['adaptability']+1
+                    └ {'AutoID': 1, 'ConversationID': 1, 'Title': '打招呼', 'Satisfaction': 9, 'Evaluate_Content': '很好', 'Persona': None, 'Accuracy': ...
+
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'

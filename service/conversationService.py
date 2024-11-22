@@ -55,13 +55,28 @@ class ConversationService(ConversationController):
     def Evaluate(cls, **kwargs):
         try:
             # Evaluate_Content加密
-            encrypted_evaluate_content = cls.encrypt(kwargs['Evaluate_Content'], cls.ENCRYPTION_KEY)
-            kwargs1 = {
-                'AutoID': kwargs['ConversationID'],
-                'ConversationID': kwargs['ConversationID'],
-                'Satisfaction': kwargs['Satisfaction'],
-                'Evaluate_Content': encrypted_evaluate_content
-            }
+            # encrypted_evaluate_content = cls.encrypt(kwargs['Evaluate_Content'], cls.ENCRYPTION_KEY)
+            res = ConversationController.get(ConversationID=kwargs['ConversationID'])
+
+            res1 = res['data'][0]
+            # print("Controller.get",res)
+            res1['Satisfaction'] = res1['Satisfaction'] if res1['Satisfaction'] is not None else 0
+            res1['adaptability'] = res1['adaptability'] if res1['adaptability'] is not None else 0
+            if kwargs['suitable']==1:
+                kwargs1 = {
+                    'AutoID': res1['AutoID'],
+                    'ConversationID': res1['ConversationID'],
+                    'Satisfaction': res1['Satisfaction']+1,
+                    'adaptability': res1['adaptability']
+                }
+            else:
+                kwargs1 = {
+                    'AutoID': res1['AutoID'],
+                    'ConversationID': res1['ConversationID'],
+                    'Satisfaction': res1['Satisfaction'],
+                    'adaptability': res1['adaptability']+1
+                }
+
             results = ConversationController.update(**kwargs1)
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': results}
         except Exception as e:

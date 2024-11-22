@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
+from flask import request
 from flask_restful import Api
 
 from . import conversation_blueprint
@@ -11,9 +11,9 @@ api = Api(conversation_blueprint)
 
 api.add_resource(ConversationResource, '/conversation/<AutoID>', '/conversation', endpoint='Conversation')
 
-@conversation_blueprint.route('/conversation/Evaluate', methods=['GET'], endpoint='Evaluate')
-def Evaluate():
-    return ConversationOtherResource.Evaluate()
+@conversation_blueprint.route('/conversation/Evaluate/<int:ConversationID>', methods=['PUT'], endpoint='Evaluate')
+def Evaluate(ConversationID):
+    return ConversationOtherResource.Evaluate(ConversationID)
 
 @conversation_blueprint.route('/conversation/add_conversation', methods=['POST'], endpoint='add_conversation')
 def add_conversation():
