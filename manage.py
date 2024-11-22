@@ -8,9 +8,13 @@
 from app import create_app
 from flask import request, jsonify, g
 from utils.response_code import RET
+from flask_cors import CORS
 
 # 创建flask的app对象
 app = create_app("develop")
+CORS(app)
+# CORS(app, resources={r"/api_1_0/*": {"origins": "http://localhost:8080"}})
+
 
 # 创建全站拦截器,每个请求之前做处理
 # @app.before_request

@@ -14,6 +14,12 @@ from utils.response_code import RET, error_map_EN
 from utils.loggings import loggings
 from models import BaseModel
 
+ENCRYPTION_KEY = 'your-encryption-key'
+
+def decrypt(encrypted_content, key):
+    # 使用异或解密文本
+    return ''.join(chr(ord(c) ^ ord(key[i % len(key)])) for i, c in enumerate(encrypted_content))
+
 
 class MessageController(Message,BaseModel):
 
@@ -54,14 +60,14 @@ class MessageController(Message,BaseModel):
             if kwargs.get('AutoID'):
                 filter_list.append(cls.AutoID == kwargs['AutoID'])
             else:
+                if kwargs.get('ConversationID') is not None:
+                    filter_list.append(cls.ConversationID == kwargs.get('ConversationID'))
                 if kwargs.get('AutoID') is not None:
                     filter_list.append(cls.AutoID == kwargs.get('AutoID'))
                 if kwargs.get('MessageID') is not None:
                     filter_list.append(cls.MessageID == kwargs.get('MessageID'))
                 if kwargs.get('Content'):
                     filter_list.append(cls.Content == kwargs.get('Content'))
-                if kwargs.get('ConversationID') is not None:
-                    filter_list.append(cls.ConversationID == kwargs.get('ConversationID'))
                 if kwargs.get('User') is not None:
                     filter_list.append(cls.User == kwargs.get('User'))
                 if kwargs.get('Number') is not None:
@@ -72,6 +78,10 @@ class MessageController(Message,BaseModel):
             size = int(kwargs.get('Size', 10))
             
             message_info = db.session.query(cls).filter(*filter_list)
+
+            for message in message_info:
+                if hasattr(message, 'Content') and message.Content is not None:
+                    message.Content = decrypt(message.Content,ENCRYPTION_KEY)
             
             count = message_info.count()
             pages = math.ceil(count / size)

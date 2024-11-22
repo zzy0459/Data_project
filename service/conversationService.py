@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+import random
 
 from controller.conversationController import ConversationController
 from controller.messageController import MessageController
@@ -39,7 +40,10 @@ class ConversationService(ConversationController):
                 'ConversationID': kwargs['ConversationID'],
             }
             results = ConversationController.get(**kwargs1)
-            res=results['data'][0]['Title']
+            if results['data']:
+                res = results['data'][0]['Title']
+            else:
+                res = "New chat"
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': res}
         except Exception as e:
             loggings.exception(1, e)
@@ -50,13 +54,13 @@ class ConversationService(ConversationController):
     @classmethod
     def Evaluate(cls, **kwargs):
         try:
-            # Evaluate_Content加密
-            encrypted_evaluate_content = cls.encrypt(kwargs['Evaluate_Content'], cls.ENCRYPTION_KEY)
+            res=ConversationController.get(AutoID=kwargs['ConversationID'])
+            res1=res['data'][0]['Satisfaction']
             kwargs1 = {
                 'AutoID': kwargs['ConversationID'],
                 'ConversationID': kwargs['ConversationID'],
-                'Satisfaction': kwargs['Satisfaction'],
-                'Evaluate_Content': encrypted_evaluate_content
+                'Satisfaction': kwargs['Satisfaction']+res1,
+                'Evaluate_Content': kwargs['Evaluate_Content']
             }
             results = ConversationController.update(**kwargs1)
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': results}
@@ -70,11 +74,14 @@ class ConversationService(ConversationController):
     def add_conversation(cls, **kwargs):
         try:
             print(kwargs)
+            title = "New chat"
+            persona = "human"
+            # conversation_id = kwargs.get('ConversationID', str(random.randint(100000, 999999)))
             # Title和Persona加密
-            encrypted_title = cls.encrypt(kwargs['Title'], cls.ENCRYPTION_KEY)
-            encrypted_persona = cls.encrypt(kwargs['Persona'], cls.ENCRYPTION_KEY)
+            encrypted_title = cls.encrypt(title, cls.ENCRYPTION_KEY)
+            encrypted_persona = cls.encrypt(persona, cls.ENCRYPTION_KEY)
             kwargs1 = {
-                'ConversationID': kwargs['ConversationID'],
+                # 'ConversationID': conversation_id,
                 'Title': encrypted_title,
                 'Persona': encrypted_persona
             }

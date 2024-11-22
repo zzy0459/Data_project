@@ -65,23 +65,30 @@ class MessageService(MessageController):
             encrypted_new_message = cls.encrypt(kwargs['Content'], cls.ENCRYPTION_KEY)
             encrypted_res1 = cls.encrypt(res1, cls.ENCRYPTION_KEY)
 
+            print("results",results)
+            if not results['data']:  # 如果 results['data'] 为空
+                auto_id = 1
+                number = 1  # 也可以将 Number 设置为 1
+            else:
+                auto_id = results['data'][-1]['AutoID'] + 1
+                number = results['data'][-1]['Number'] + 1
             MessageController.add(**{
-                'AutoID': results['data'][-1]['AutoID'] + 1,
+                'AutoID': auto_id,
                 'ConversationID': kwargs['ConversationID'],
                 'User': 1,
                 'Content': encrypted_new_message,
-                'Number': results['data'][-1]['Number'] + 1
+                'Number': number
             })
             MessageController.add(**{
-                'AutoID': results['data'][-1]['AutoID'] + 2,
+                'AutoID': auto_id + 1,
                 'ConversationID': kwargs['ConversationID'],
                 'User': 0,
                 'Content': encrypted_res1,
-                'Number': results['data'][-1]['Number'] + 2
+                'Number': number + 1
             })
             return {'code': RET.OK, 'message': error_map_EN[RET.OK], 'data': res1}
         except Exception as e:
-            # loggings.exception(1, e)
+            loggings.exception(1, e)
             return {'code': RET.DBERR, 'message': error_map_EN[RET.DBERR], 'data': {'error': str(e)}}
         finally:
             db.session.close()
