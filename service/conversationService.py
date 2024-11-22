@@ -59,7 +59,7 @@ class ConversationService(ConversationController):
             kwargs1 = {
                 'AutoID': kwargs['ConversationID'],
                 'ConversationID': kwargs['ConversationID'],
-                'Satisfaction': kwargs['Satisfaction']+res1,
+                'Satisfaction': str(int(kwargs['Satisfaction'])+int(res1)),
                 'Evaluate_Content': kwargs['Evaluate_Content']
             }
             results = ConversationController.update(**kwargs1)
